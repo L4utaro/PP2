@@ -1,10 +1,10 @@
-package dto;
+package modelo;
 
 public class Bloque {
-	double x = 0;
-	double y = 0;
-	double ancho = 20;
-	double largo = 20;
+	private double x = 0;
+	private double y = 0;
+	private double ancho = 20;
+	private double largo = 20;
 	
 	public Bloque (double x, double y){
 		this.x = x;
