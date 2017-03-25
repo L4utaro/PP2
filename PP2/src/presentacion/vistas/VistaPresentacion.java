@@ -1,4 +1,4 @@
-package presesntacion.vistas;
+package presentacion.vistas;
 
 public class VistaPresentacion {
 
