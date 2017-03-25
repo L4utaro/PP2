@@ -2,6 +2,7 @@ package presentacion.controlador;
 
 import modelo.*;
 
+@SuppressWarnings("unused")
 public class CrearEscenario {
 	private Mapa mapa;
 	private Tablero tablero;

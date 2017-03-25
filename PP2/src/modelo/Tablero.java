@@ -1,7 +1,5 @@
 package modelo;
 
-import modelo.*;
-
 public class Tablero {
 	private int sizeX;
 	private int sizeY;
