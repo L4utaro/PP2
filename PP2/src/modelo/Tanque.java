@@ -17,7 +17,7 @@ public class Tanque {
 	private Bala bala;
 	
 	//Construcor
-	Tanque(double unX, double unY, double unAnguloOrientacion){
+	public Tanque(double unX, double unY, double unAnguloOrientacion){
 		this.x= unX;
 		this.y= unY;
 		this.anguloOrientacion= unAnguloOrientacion;
