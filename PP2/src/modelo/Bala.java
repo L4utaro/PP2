@@ -20,7 +20,7 @@ public class Bala {
 	    }
 	
 	 public void dibujar(Entorno ent) {
-	        ent.dibujarCirculo(this.x, this.y + 30, 5, Color.red);
+	        ent.dibujarCirculo(this.x, this.y + 30, 5, Color.green);
 	    }
 	 
 	public double getX() {

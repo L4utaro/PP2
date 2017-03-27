@@ -152,6 +152,16 @@ public class Tanque {
 	
 	
 	
+	public double getAnguloOrientacion() {
+		return anguloOrientacion;
+	}
+
+
+	public void setAnguloOrientacion(double anguloOrientacion) {
+		this.anguloOrientacion = anguloOrientacion;
+	}
+
+
 	public void Dibujar(Entorno ent,boolean bala){
 		ent.dibujarImagen(this.imagen_tanque,this.x+5, this.y,this.anguloOrientacion,0.8);			//cañon
 		if(bala==true){						
