@@ -7,24 +7,19 @@ import java.awt.Color;
 import entorno.Entorno;
 import entorno.InterfaceJuego;
 
-public class Disparo extends InterfaceJuego{
+public class Disparo{
 	private Util util;
 	private double anguloOrientacion = 0; // 0º, 90º, 180º ó 270º
 	private Bala bala;
 	private Tanque tanque;
 	private Entorno entorno;
 
-	public Disparo(Tanque tanque){
-    	this.entorno = new Entorno(this, "Battle-City", 800, 600);
-    	this.entorno.dibujarCirculo(40, 40, 200, Color.RED);
+	public Disparo(Tanque tanque, Entorno entorno){
+    	this.entorno = entorno;
 		this.tanque = tanque;
 		util = new Util();
 	}
-	
-	 public void tick() {
-	        disparar(entorno);
-	 }
-	
+
 	//controlaLaOrientacionEnLa que se encuentra el tanque
 	//esa orientacion se la pasa a ControlarLimiteDeTablero, que controla si se puede disparar en esa direccion
 	//despues sale el disparo

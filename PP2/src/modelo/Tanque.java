@@ -22,7 +22,7 @@ public class Tanque {
 		this.y= unY;
 		this.anguloOrientacion= unAnguloOrientacion;
 		
-		this.imagen_tanque= Herramientas.cargarImagen("img/tanque7.png");
+		this.imagen_tanque= Herramientas.cargarImagen("imagen/tanque7.png");
 	}
 	
 	

@@ -19,8 +19,8 @@ public class Bala {
 	            this.y -= this.velocidad;
 	    }
 	
-	 public void dibujar(Entorno unEntorno) {
-	        unEntorno.dibujarCirculo(this.x, this.y + 30, 5, Color.red);
+	 public void dibujar(Entorno ent) {
+	        ent.dibujarCirculo(this.x, this.y + 30, 5, Color.red);
 	    }
 	 
 	public double getX() {
