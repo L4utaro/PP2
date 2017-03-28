@@ -16,7 +16,7 @@ public class Test extends InterfaceJuego{
     
     public Test(){
     	this.entorno = new Entorno(this, "Battle-City", ANCHO_ENTORNO, ALTO_ENTORNO);
-    	this.tanque = new Tanque(400, 300, 90);
+    	this.tanque = new Tanque(400, 300, 270);
 //    	this.tanque.Dibujar(entorno, false);
     	this.disparo = new Disparo(tanque,entorno);
     }

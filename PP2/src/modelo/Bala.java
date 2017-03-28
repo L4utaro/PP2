@@ -7,7 +7,7 @@ import entorno.Entorno;
 public class Bala {
 	private double x;
 	private double y;
-    private double velocidad = 5;
+    private double velocidad = 3;
 	
 	public Bala (double x2, double y2){
 		this.x = x2;
@@ -15,9 +15,24 @@ public class Bala {
 	}
 
 	 public void avanzarArriba() {
-	        if (this.y > 0)
-	            this.y -= this.velocidad;
-	    }
+		 if (this.y > 0)
+			 this.y -= this.velocidad;
+	 }
+	 
+	 public void avanzarAbajo() {
+		 if (this.y > 0)
+			 this.y += this.velocidad;
+	 }
+	
+	 public void avanzarDerecha() {
+		 if (this.x > 0)
+			 this.x += this.velocidad;
+	 }
+	
+	 public void avanzarIzquierda() {
+		 if (this.x > 0)
+			 this.x -= this.velocidad;
+	 }
 	
 	 public void dibujar(Entorno ent) {
 	        ent.dibujarCirculo(this.x, this.y + 30, 5, Color.green);
