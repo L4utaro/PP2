@@ -1,7 +1,5 @@
 package test;
 
-import java.awt.Color;
-
 import entorno.Entorno;
 import entorno.InterfaceJuego;
 import modelo.Disparo;
@@ -22,13 +20,11 @@ public class Test extends InterfaceJuego{
     }
     
     public void tick(){
-    	this.entorno.dibujarCirculo(400, 300, 100, Color.red);
-    	disparar();
+    	//this.entorno.dibujarCirculo(400, 300, 100, Color.red);
+    	//Image imagen = Herramientas.cargarImagen("imagen/bala 00.png");
+    	//this.entorno.dibujarImagen(imagen, 400, 300, 0);
+    	this.disparo.disparar();
     }
-    
-    private void disparar() {
-    	this.disparo.disparar(entorno);
-	}
 
 	@SuppressWarnings("unused")
     public static void main(String[] args) {

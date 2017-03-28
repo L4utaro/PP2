@@ -1,5 +1,9 @@
 package util;
 
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
 public class Util {
 
 	//controlarPosicion
@@ -15,4 +19,12 @@ public class Util {
 			}
 		return true;
 	}
+	
+	public static ImageIcon redimension(ImageIcon icono, int x,int y){
+		Image img = icono.getImage(); 
+		Image otraimg = img.getScaledInstance(x,y,java.awt.Image.SCALE_SMOOTH); //creamos una imagen nueva dándole las dimensiones que queramos a la antigua
+		ImageIcon otroicon = new ImageIcon(otraimg);
+		return otroicon;
+	}
+	
 }

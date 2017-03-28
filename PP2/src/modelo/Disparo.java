@@ -1,10 +1,8 @@
 package modelo;
 
 import util.Util;
-
-import java.awt.Color;
-
 import entorno.Entorno;
+import sonido.Sonido;
 
 public class Disparo{
 	private Util util;
@@ -21,13 +19,14 @@ public class Disparo{
 	//controlaLaOrientacionEnLa que se encuentra el tanque
 	//esa orientacion se la pasa a ControlarLimiteDeTablero, que controla si se puede disparar en esa direccion
 	//despues sale el disparo
-	public void disparar(Entorno ent){
+	public void disparar(){
 		if(this.bala == null){
 			System.out.println("se creo la bala");
-			this.bala = new Bala(tanque.x,tanque.y);
+			Sonido.TanqueDisparo.play();
+			this.bala = new Bala(this.entorno, tanque.x,tanque.y);
 		}
 		if(util.controlarLimiteDeTablero(this.bala.getX(), this.bala.getY(), this.tanque.getAnguloOrientacion())){
-			movimiento2(ent);
+			movimiento2(this.entorno);
 		}
 	}
 	
@@ -54,10 +53,9 @@ public class Disparo{
 				this.bala = null;
 			}
 		}
-		this.bala.dibujar(ent);
+		this.bala.dibujar();
 	}
 
-	
 	public void movimiento2(Entorno ent){
 		if(this.tanque.getAnguloOrientacion() == 0){//arriba
 			this.bala.avanzarArriba();
@@ -80,11 +78,10 @@ public class Disparo{
 				this.bala = null;
 			}
 		}
-		this.bala.dibujar(ent);
-	}
-	
-	
-	private void dibujar(Entorno ent) {
-		ent.dibujarCirculo(bala.getX(), bala.getY(), 5, Color.red);
+		if(this.bala == null){
+			Sonido.TanqueDisparo.stop();
+			Sonido.TanqueDisparoExplocion.play();
+		}
+		//this.bala.dibujar();
 	}
 }
