@@ -21,7 +21,6 @@ public class Disparo{
 	//despues sale el disparo
 	public void disparar(){
 		if(this.bala == null){
-			System.out.println("se creo la bala");
 			Sonido.TanqueDisparo.play();
 			this.bala = new Bala(this.entorno, tanque.x,tanque.y);
 		}
@@ -59,21 +58,25 @@ public class Disparo{
 	public void movimiento2(Entorno ent){
 		if(this.tanque.getAnguloOrientacion() == 0){//arriba
 			this.bala.avanzarArriba();
+			this.bala.dibujarArriba();
 			if(this.bala.getY() <= 0){
 				this.bala = null;
 			}
 		}else if(this.tanque.getAnguloOrientacion() == 90){//derecha
 			this.bala.avanzarDerecha();
+			this.bala.dibujarDerecha();
 			if(this.bala.getX() >= 800){
 				this.bala = null;
 			}
 		}else if(this.tanque.getAnguloOrientacion() == 180){//abajo
 			this.bala.avanzarAbajo();
+			this.bala.dibujarAbajo();
 			if(this.bala.getY() >= 600){
 				this.bala = null;
 			}
 		}else if(this.tanque.getAnguloOrientacion() == 270){//izquierda
 			this.bala.avanzarIzquierda();
+			this.bala.dibujarIzquierda();
 			if(this.bala.getX() <= 0){
 				this.bala = null;
 			}
@@ -82,6 +85,5 @@ public class Disparo{
 			Sonido.TanqueDisparo.stop();
 			Sonido.TanqueDisparoExplocion.play();
 		}
-		//this.bala.dibujar();
 	}
 }
