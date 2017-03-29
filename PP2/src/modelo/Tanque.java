@@ -1,6 +1,5 @@
 package modelo;
 
-import java.awt.Color;
 import java.awt.Image;
 
 import entorno.Entorno;
@@ -10,11 +9,11 @@ public class Tanque {
 	
 	double x;
 	double y;
-	double anguloOrientacion= 0; // 0º, 90º, 180º ó 270º
+	double anguloOrientacion= 0; // (0º=0*Math.PI), (90º=Math.PI/2), (180º=Math.PI) ó (270º=Math.PI*1.5)
 	Image imagen_tanque;
 	
-	double avanceDeCasillero=20;//debería avanzar 20 pixeles (1 casillero)
-	private Bala bala;
+	double avanceDeCasillero=2;//debería avanzar 20 pixeles (1 casillero)
+	//private Bala bala;
 	
 	//Construcor
 	public Tanque(double unX, double unY, double unAnguloOrientacion){
@@ -22,7 +21,7 @@ public class Tanque {
 		this.y= unY;
 		this.anguloOrientacion= unAnguloOrientacion;
 		
-		this.imagen_tanque= Herramientas.cargarImagen("imagen/tanque7.png");
+		this.imagen_tanque= Herramientas.cargarImagen("imagen/tanqueDerecha.png");
 	}
 	
 	
@@ -31,25 +30,23 @@ public class Tanque {
 	//Si se presiona la tecla 'derecha' una sola vez y si el Tanque NO estaba 
 	//orientado hacia la 'izquierda'
 	public void girar_Derecha(){
-		this.anguloOrientacion =0;
-		modificarFrenteTanque();
+		this.anguloOrientacion =0;//0º
+		//modificarFrenteTanque();
+		//this.x += 1;
 	}
 	
 	//Si se presiona la tecla 'izquierda' una sola vez y si el Tanque NO estaba 
 	//orientado hacia la 'izquierda'
 	public void girar_Izquierda(){
-		this.anguloOrientacion = 180;
-		modificarFrenteTanque();
+		this.anguloOrientacion = Math.PI;//180º;
 	}
 	
 	public void girar_Arriba(){
-		this.anguloOrientacion = 90;
-		modificarFrenteTanque();
+		this.anguloOrientacion = Math.PI*1.5;//270º;
 	}
 	
 	public void girar_Abajo(){
-		this.anguloOrientacion = 270;
-		modificarFrenteTanque();
+		this.anguloOrientacion = Math.PI/2;//90º
 	}
 	
 	//Da la vuelta el tanque
@@ -79,14 +76,15 @@ public class Tanque {
 	}
 	
 	public void avanzarArriba(){
-		this.y += avanceDeCasillero;
-	}
-	
-	public void avanzarAbajo(){
 		this.y -= avanceDeCasillero;
 	}
 	
+	public void avanzarAbajo(){
+		this.y += avanceDeCasillero;
+	}
+	
 	public void controlAvance(Entorno ent){
+		controlFronteraTanque();
 		//DERECHA
 		if(ent.estaPresionada(ent.TECLA_DERECHA) && anguloOrientacion==0){
 			avanzarDerecha();
@@ -96,28 +94,30 @@ public class Tanque {
 		}
 		
 		//ARRIBA
-		if(ent.estaPresionada(ent.TECLA_ARRIBA) && anguloOrientacion==90){
+		if(ent.estaPresionada(ent.TECLA_ARRIBA) && anguloOrientacion==Math.PI*1.5){
 			avanzarArriba();
 		}
-		if(ent.estaPresionada(ent.TECLA_ARRIBA) && anguloOrientacion!=90){
+		if(ent.estaPresionada(ent.TECLA_ARRIBA) && anguloOrientacion!=Math.PI*1.5){
 			girar_Arriba();
 		}
 		
 		//IZQUIERDA
-		if(ent.estaPresionada(ent.TECLA_IZQUIERDA) && anguloOrientacion==180){
+		if(ent.estaPresionada(ent.TECLA_IZQUIERDA) && anguloOrientacion==Math.PI){
 			avanzarIzquierda();
 		}
-		if(ent.estaPresionada(ent.TECLA_IZQUIERDA) && anguloOrientacion!=180){
+		if(ent.estaPresionada(ent.TECLA_IZQUIERDA) && anguloOrientacion!=Math.PI){
 			girar_Izquierda();
 		}
 		
 		//ABAJO
-		if(ent.estaPresionada(ent.TECLA_ABAJO) && anguloOrientacion==270){
-			avanzarArriba();
+		if(ent.estaPresionada(ent.TECLA_ABAJO) && anguloOrientacion==Math.PI/2){
+			avanzarAbajo();
 		}
-		if(ent.estaPresionada(ent.TECLA_ABAJO) && anguloOrientacion!=270){
-			girar_Arriba();
+		if(ent.estaPresionada(ent.TECLA_ABAJO) && anguloOrientacion!=Math.PI/2){
+			girar_Abajo();
 		}
+		
+		controlFronteraTanque();
 	}
 	
 	/****** movimientos-fin ******/
@@ -150,7 +150,20 @@ public class Tanque {
 		
 	}
 	
-	
+	private void controlFronteraTanque(){
+		if(this.y<=700 && this.y>=580){//OK
+			this.y=580;
+		}
+		if(this.x<=20 && this.x>=-100){//OK
+			this.x=20;
+		}
+		if(this.y<=20 && this.y>=-100){//OK
+			this.y=20;
+		}
+		if(this.x<=900 && this.x>=780){//OK
+			this.x=780;
+		}	
+	}
 	
 	public double getAnguloOrientacion() {
 		return anguloOrientacion;
@@ -163,9 +176,9 @@ public class Tanque {
 
 
 	public void Dibujar(Entorno ent,boolean bala){
-		ent.dibujarImagen(this.imagen_tanque,this.x+5, this.y,this.anguloOrientacion,0.8);			//cañon
-		if(bala==true){						
-		ent.dibujarCirculo(x+9, y-23,21, Color.GREEN);}				//municion que tiene cargada
+		ent.dibujarImagen(this.imagen_tanque,this.x, this.y,this.anguloOrientacion,0.1);			//cañon
+		/*if(bala==true){						
+		ent.dibujarCirculo(x+9, y-23,21, Color.GREEN);}*/				//municion que tiene cargada
 		//else{ent.dibujarCirculo(x+9, y-23,21, Color.RED); }
 		
 	}
