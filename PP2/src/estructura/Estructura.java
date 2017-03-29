@@ -1,9 +1,7 @@
 package estructura;
 //abstracto
-public class Estructura {
+public interface Estructura {
 	
-	public void colisionBala(){
-		
-	}
+	public void colisionBala();
 }
 
