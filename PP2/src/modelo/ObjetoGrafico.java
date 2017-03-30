@@ -1,6 +1,6 @@
 package modelo;
 
-public class ObjetosGraficos {
+public class ObjetoGrafico {
 	//posicion (x,y)
 	// imagen
 	//dibujar()
