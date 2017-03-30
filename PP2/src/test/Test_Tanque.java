@@ -28,7 +28,7 @@ public class Test_Tanque extends InterfaceJuego{
 
     	this.entorno.dibujarImagen(this.fondo, entorno.getWidth()/2,entorno.getHeight()/2, 0, 0.5);
 		
-		this.tanque.Dibujar(this.entorno, true);
+		this.tanque.dibujar(this.entorno);
 		
 		this.tanque.controlAvance(this.entorno);
 

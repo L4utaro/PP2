@@ -175,8 +175,8 @@ public class Tanque {
 	}
 
 
-	public void Dibujar(Entorno ent,boolean bala){
-		ent.dibujarImagen(this.imagen_tanque,this.x, this.y,this.anguloOrientacion,0.1);			//cañon
+	public void dibujar(Entorno ent){
+		ent.dibujarImagen(this.imagen_tanque,this.x, this.y,this.anguloOrientacion,0);			//cañon
 		/*if(bala==true){						
 		ent.dibujarCirculo(x+9, y-23,21, Color.GREEN);}*/				//municion que tiene cargada
 		//else{ent.dibujarCirculo(x+9, y-23,21, Color.RED); }
