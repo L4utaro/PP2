@@ -14,7 +14,7 @@ public class Test extends InterfaceJuego{
     
     public Test(){
     	this.entorno = new Entorno(this, "Battle-City", ANCHO_ENTORNO, ALTO_ENTORNO);
-    	this.tanque = new Tanque(400, 300, 270);
+    	this.tanque = new Tanque(400, 300, 0);
 //    	this.tanque.Dibujar(entorno, false);
     	this.disparo = new Disparo(tanque,entorno);
     }
@@ -23,7 +23,9 @@ public class Test extends InterfaceJuego{
     	//this.entorno.dibujarCirculo(400, 300, 100, Color.red);
     	//Image imagen = Herramientas.cargarImagen("imagen/bala 00.png");
     	//this.entorno.dibujarImagen(imagen, 400, 300, 0);
-    	this.disparo.disparar();
+    	if(this.entorno.estaPresionada(this.entorno.TECLA_CTRL)){
+        		this.disparo.disparar(); 
+    	}
     }
 
 	@SuppressWarnings("unused")

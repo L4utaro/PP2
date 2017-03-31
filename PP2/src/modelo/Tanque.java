@@ -1,7 +1,6 @@
 package modelo;
 
 import java.awt.Image;
-
 import entorno.Entorno;
 import entorno.Herramientas;
 
@@ -11,10 +10,11 @@ public class Tanque {
 	double y;
 	double anguloOrientacion= 0; // (0º=0*Math.PI), (90º=Math.PI/2), (180º=Math.PI) ó (270º=Math.PI*1.5)
 	Image imagen_tanque;
+	Tanque tanque;
 	
 	double avanceDeCasillero=2;//debería avanzar 20 pixeles (1 casillero)
 	//private Bala bala;
-	
+	//private Disparo disparo;
 	//Construcor
 	public Tanque(double unX, double unY, double unAnguloOrientacion){
 		this.x= unX;
@@ -121,27 +121,27 @@ public class Tanque {
 	}
 	
 	/****** movimientos-fin ******/
-	
+	int contador=0;
+	boolean fuego= false;
+	public boolean controlDisparo(Entorno ent){
+		if(ent.estaPresionada(ent.TECLA_ENTER)){
+			fuego= true;
+			contador +=1;
+		}
+		/*if((fuego == true) && (contador == 1)){
+			disparo(ent);
+			contador +=1;
+			System.out.println("Presiono la tecla Enter!");
+		}*/
+		return fuego;
+	}
 	
 	//disparo la bala segun el "anguloOrientacion" actual
-	public void disparo(){
-		/*if(this.anguloOrientacion == 0){
-			this.bala.avanzarDerecha();
-		}
-		
-		if(this.anguloOrientacion == 90){
-			this.bala.avanzarArriba();
-		}
-		
-		if(this.anguloOrientacion == 180){
-			this.bala.avanzarIzquierda();
-		}
-		
-		if(this.anguloOrientacion == 0){
-			this.bala.avanzarAbajo();
-		}*/
-		
-	}
+	/*public void disparo(Entorno ent){
+		this.tanque =new Tanque(this.x, this.y, this.anguloOrientacion); 
+		this.disparo= new Disparo(this.tanque, ent);
+		this.disparo.disparar();//this.disparo.disparar(tanque);
+	}*/
 	
 	
 	
@@ -175,8 +175,18 @@ public class Tanque {
 	}
 
 
-	public void dibujar(Entorno ent){
-		ent.dibujarImagen(this.imagen_tanque,this.x, this.y,this.anguloOrientacion,0);			//cañon
+	public double getX() {
+		return this.x;
+	}
+
+
+	public double getY() {
+		return this.y;
+	}
+
+
+	public void Dibujar(Entorno ent,boolean bala){
+		ent.dibujarImagen(this.imagen_tanque,this.x, this.y,this.anguloOrientacion,0.1);			//cañon
 		/*if(bala==true){						
 		ent.dibujarCirculo(x+9, y-23,21, Color.GREEN);}*/				//municion que tiene cargada
 		//else{ent.dibujarCirculo(x+9, y-23,21, Color.RED); }
@@ -184,3 +194,4 @@ public class Tanque {
 	}
 	
 }
+
