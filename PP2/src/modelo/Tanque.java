@@ -6,11 +6,10 @@ import entorno.Herramientas;
 
 public class Tanque {
 	
-	double x;
-	double y;
-	double anguloOrientacion= 0; // (0º=0*Math.PI), (90º=Math.PI/2), (180º=Math.PI) ó (270º=Math.PI*1.5)
-	Image imagen_tanque;
-	Tanque tanque;
+	private double x;
+	private double y;
+	private double anguloOrientacion= 0; // (0º=0*Math.PI), (90º=Math.PI/2), (180º=Math.PI) ó (270º=Math.PI*1.5)
+	private Image imagen_tanque;
 	
 	double avanceDeCasillero=2;//debería avanzar 20 pixeles (1 casillero)
 	//private Bala bala;
@@ -151,17 +150,17 @@ public class Tanque {
 	}
 	
 	private void controlFronteraTanque(){
-		if(this.y<=700 && this.y>=580){//OK
-			this.y=580;
+		if(this.y <= 700 && this.y >= 560){//OK
+			this.y = 560;
 		}
-		if(this.x<=20 && this.x>=-100){//OK
-			this.x=20;
+		if(this.x<=40 && this.x>=-100){//OK
+			this.x=40;
 		}
-		if(this.y<=20 && this.y>=-100){//OK
-			this.y=20;
+		if(this.y<=40 && this.y>=-100){//OK
+			this.y=40;
 		}
-		if(this.x<=900 && this.x>=780){//OK
-			this.x=780;
+		if(this.x<=900 && this.x>=560){//OK
+			this.x=561;
 		}	
 	}
 	
@@ -186,11 +185,7 @@ public class Tanque {
 
 
 	public void Dibujar(Entorno ent,boolean bala){
-		ent.dibujarImagen(this.imagen_tanque,this.x, this.y,this.anguloOrientacion,0.1);			//cañon
-		/*if(bala==true){						
-		ent.dibujarCirculo(x+9, y-23,21, Color.GREEN);}*/				//municion que tiene cargada
-		//else{ent.dibujarCirculo(x+9, y-23,21, Color.RED); }
-		
+		ent.dibujarImagen(this.imagen_tanque,this.x, this.y,this.anguloOrientacion,0.1);
 	}
 	
 }

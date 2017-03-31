@@ -2,31 +2,24 @@ package main;
 
 import java.awt.Color;
 import java.awt.Image;
-
 import entorno.Entorno;
 import entorno.Herramientas;
 import entorno.InterfaceJuego;
 import modelo.Bala;
-import modelo.Disparo;
 import modelo.Tanque;
-import sonido.Sonido;
-import util.Util;
+import presentacion.controlador.Disparo;
 
 public class Juego extends InterfaceJuego {
     private Entorno entorno;
     private Tanque tanque;
-    private Util util;
     private Disparo disparo;
-    private int ANCHO_ENTORNO = 800;
-    private int ALTO_ENTORNO = 600;
 	private Image fondo = Herramientas.cargarImagen("imagen/fondo.jpg");
-    private boolean controlTick = true;
     private Bala bala;
     private boolean tiro=false;
 
 	
 	public Juego() {
-    	this.entorno = new Entorno(this, "Battle-City", ANCHO_ENTORNO, ALTO_ENTORNO);
+    	this.entorno = new Entorno(this, "Battle-City", 800, 600);
 		this.tanque = new Tanque(400, 400, 0);
 		this.disparo = new Disparo(tanque, entorno);
 	}
@@ -34,9 +27,8 @@ public class Juego extends InterfaceJuego {
 
     public void tick() {
     	if (!esElFin()) {
-        	this.entorno.dibujarRectangulo(300,300, 520, 520, 0, Color.gray);
-        	//this.entorno.dibujarRectangulo(300,300, 500, 500, 0, Color.black);
-        	this.entorno.dibujarImagen(fondo, 300, 300, 0);
+        	this.entorno.dibujarRectangulo(300,300, 530, 530, 0, Color.gray);
+        	this.entorno.dibujarImagen(fondo, 300, 300, 0);//520x520
         	
     		manejoTanque();
     		
@@ -70,7 +62,7 @@ public class Juego extends InterfaceJuego {
     		//SI PRESIONO LA TECLA ENTER Y LA BALA NO ESTA CREADA, SE CREA LA BALA Y SE PONE tiro= true;
     		if(this.entorno.estaPresionada(this.entorno.TECLA_ENTER) && bala == null ){
     			//System.out.println("presiono Enter");
-    			this.bala=new Bala(this.entorno,this.tanque.getX(),this.tanque.getY());				
+    			this.bala=new Bala(this.entorno,this.tanque);				
     			tiro=true;
     			//System.out.println("tiro Enter: "+tiro);
     		}
@@ -99,9 +91,6 @@ public class Juego extends InterfaceJuego {
     		else{
     			tiro= false;
     			this.bala= null;
-    			//System.out.println("tiro: "+ tiro);
-    			//System.out.println("frontera: "+this.disparo.controlFronteraBala());
-    			//System.out.println("bala corte: "+bala);
     		}
     		if(this.bala == null){
     			tiro=false;

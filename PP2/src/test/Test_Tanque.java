@@ -8,8 +8,8 @@ import entorno.Entorno;
 import entorno.Herramientas;
 import entorno.InterfaceJuego;
 import modelo.Bala;
-import modelo.Disparo;
 import modelo.Tanque;
+import presentacion.controlador.Disparo;
 
 public class Test_Tanque extends InterfaceJuego{
     private Entorno entorno;
@@ -57,7 +57,7 @@ public class Test_Tanque extends InterfaceJuego{
 		//SI PRESIONO LA TECLA ENTER Y LA BALA NO ESTA CREADA, SE CREA LA BALA Y SE PONE tiro= true;
 		if(this.entorno.estaPresionada(this.entorno.TECLA_ENTER) && bala == null ){
 			//System.out.println("presiono Enter");
-			this.bala=new Bala(this.entorno,this.tanque.getX(),this.tanque.getY());				
+			this.bala=new Bala(this.entorno,this.tanque);				
 			tiro=true;
 			//System.out.println("tiro Enter: "+tiro);
 		}

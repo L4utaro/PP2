@@ -2,8 +2,8 @@ package test;
 
 import entorno.Entorno;
 import entorno.InterfaceJuego;
-import modelo.Disparo;
 import modelo.Tanque;
+import presentacion.controlador.Disparo;
 
 public class Test extends InterfaceJuego{
     private Entorno entorno;
