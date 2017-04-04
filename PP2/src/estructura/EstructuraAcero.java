@@ -6,13 +6,21 @@ import entorno.Entorno;
 import modelo.Bala;
 import modelo.Casilla;
 import modelo.ObjetoGrafico;
+import modelo.objeto.Coordenada;
+import modelo.objeto.Imagen;
 
 public class EstructuraAcero extends ObjetoGrafico implements Estructura{
-	@SuppressWarnings("unused")
-	private String imagenDir;
 
-	public void colisionBala(){
-		
+	
+	public EstructuraAcero()
+	{
+		//this.imagen = new Imagen("agua.png");
+		System.out.println("me construi, estructura acero ");
+	}
+	
+	public void colisionBala()
+	{
+
 	}
 
 	@Override
@@ -33,5 +41,11 @@ public class EstructuraAcero extends ObjetoGrafico implements Estructura{
 	public void dibujar(Entorno unEntorno, Casilla casilla) {
 		//unEntorno.dibujarRectangulo(casilla.x, casilla.y, 20, 20, 0, Color.GRAY);
 		
+	}
+
+	@Override
+	public void dibujar(Entorno ent, Coordenada c) {
+		// TODO Auto-generated method stub
+		ent.dibujarRectangulo(c.getX(), c.getY(), 20, 20, 0, Color.GREEN);
 	}
 }

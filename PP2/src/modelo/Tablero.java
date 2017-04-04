@@ -1,41 +1,38 @@
 package modelo;
 
+import java.util.Random;
+
+import modelo.objeto.Posicion;
+
 public class Tablero {
-	private int sizeX;
-	private int sizeY;
 	private Casilla [][] casillas;
+	private TableroSize size;
 	
-	public Tablero(int sizeX, int sizeY){
-		this.sizeX = sizeX;
-		this.sizeY = sizeY;
-		int casillasPorMapa = 26;
-		inicializar(casillasPorMapa);
+	public Tablero(TableroSize size){
+		this.setSize(size);
+		this.casillas = new Casilla[size.getFilas()][size.getColumnas()];
+		inicializar();
 	}
 	
-	private void inicializar(int casillasPorMapa) {
-		for(int fila = 0; fila < casillasPorMapa; fila++){
-			for(int colum = 0; colum < casillasPorMapa; colum++){
+	public Tablero() 
+	{
+		// TODO Auto-generated constructor stub
+	}
+
+	private void inicializar() {
+		for(int fila = 0; fila < size.getFilas(); fila++)
+		{
+			for(int colum = 0; colum < size.getColumnas();colum++){
 				casillas [fila] [colum] = new Casilla (); 
 			}
 		}
 	}
-
-	public int getSizeX() {
-		return sizeX;
+	
+	public boolean estaOcupada(int i, int j)
+	{
+		return casillas[i][j].isEstaVacia();
 	}
-
-	public void setSizeX(int sizeX) {
-		this.sizeX = sizeX;
-	}
-
-	public int getSizeY() {
-		return sizeY;
-	}
-
-	public void setSizeY(int sizeY) {
-		this.sizeY = sizeY;
-	}
-
+	
 	public Casilla[][] getCasillas() {
 		return casillas;
 	}
@@ -43,4 +40,26 @@ public class Tablero {
 	public void setCasillas(Casilla[][] casillas) {
 		this.casillas = casillas;
 	}
+
+	public TableroSize getSize() {
+		return size;
+	}
+
+	public void setSize(TableroSize size) {
+		this.size = size;
+	}
+
+	public Casilla getCasilla(Posicion posicion) 
+	{
+		return casillas[posicion.getCasillaI()][posicion.getCasillaJ()];
+	}
+	
+	public Casilla obtenerCasillaAleatoria()
+	{
+		Random aleatorio = new Random();
+		int i = aleatorio.nextInt(size.getFilas());
+		int j = aleatorio.nextInt(size.getColumnas());
+		return getCasilla(new Posicion(i,j));
+	}
+	
 }

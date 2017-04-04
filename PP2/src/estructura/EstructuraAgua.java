@@ -1,16 +1,25 @@
 package estructura;
 
-import java.awt.Color;
-
 import modelo.Bala;
 import modelo.Casilla;
 import modelo.ObjetoGrafico;
+import modelo.objeto.Coordenada;
+import modelo.objeto.Imagen;
+
+import java.awt.Color;
+
 import entorno.Entorno;
 
 public class EstructuraAgua extends ObjetoGrafico implements Estructura {
-	@SuppressWarnings("unused")
-	private String imagenDir;
+	
 
+	public EstructuraAgua()
+	{
+		//this.imagen = new Imagen("/PP2/src/imagen/agua.png");
+		System.out.println("me construi , estructura agua");
+	}
+	
+	
 	public void colisionBala(){
 		
 	}
@@ -34,4 +43,11 @@ public class EstructuraAgua extends ObjetoGrafico implements Estructura {
 		//unEntorno.dibujarRectangulo(casilla.x, casilla.y, 20, 20, 0, Color.BLUE);
 		
 	}
+
+	@Override
+	public void dibujar(Entorno ent, Coordenada c) {
+		// TODO Auto-generated method stub
+		ent.dibujarRectangulo(c.getX(), c.getY(), 20, 20, 0, Color.BLUE);
+	}
 }
+

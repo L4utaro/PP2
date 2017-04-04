@@ -1,18 +1,19 @@
 package modelo;
 
+import modelo.objeto.Coordenada;
+
 public class Casilla {
 
 	private boolean estaVacia;
 	private ObjetoGrafico objetoGrafico;
-	private int x , y;
+	private Coordenada coordenada;
 	
 	//ObjetoGrafico
 	public Casilla()
 	{
-		this.estaVacia = false;		
+		this.estaVacia = true;		
 	}
 	
-
 	public boolean isEstaVacia() 
 	{
 		return estaVacia;
@@ -23,11 +24,29 @@ public class Casilla {
 		this.estaVacia = estaVacia;
 	}
 
+	public ObjetoGrafico getObjeto()
+	{
+		return objetoGrafico;
+	}
 
+	public void setObjetoGrafico(ObjetoGrafico objeto)
+	{
+		this.objetoGrafico = objeto;
+	}
+	
 	public void liberarCasilla() 
 	{
 		this.setEstaVacia(true);
-		this.objetoGrafico = null;
-		
+		this.setObjetoGrafico(null);		
+	}
+
+	public Coordenada getCoordenada() 
+	{
+		return coordenada;
+	}
+
+	public void setCoordenada(Coordenada coordenada) 
+	{
+		this.coordenada = coordenada;
 	}
 }
