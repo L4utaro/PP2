@@ -7,7 +7,7 @@ import entorno.Entorno;
 import entorno.Herramientas;
 import entorno.InterfaceJuego;
 import modelo.Bala;
-import modelo.Disparo;
+import presentacion.controlador.Disparo;
 import modelo.TableroGrafico;
 import modelo.TableroSize;
 import modelo.Tanque;
