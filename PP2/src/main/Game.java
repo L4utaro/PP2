@@ -9,7 +9,7 @@ import modelo.Bala;
 import modelo.Tanque;
 import presentacion.controlador.Disparo;
 
-public class Juego extends InterfaceJuego {
+public class Game extends InterfaceJuego {
     private Entorno entorno;
     private Tanque tanque;
     private Disparo disparo;
@@ -18,7 +18,7 @@ public class Juego extends InterfaceJuego {
     private boolean tiro=false;
 
 	
-	public Juego() {
+	public Game() {
     	this.entorno = new Entorno(this, "Battle-City", 800, 600);
 		this.tanque = new Tanque(400, 400, 0);
 		this.disparo = new Disparo(tanque, entorno);

@@ -4,6 +4,6 @@ public class Main {
 
 	public static void main(String[] args) {
         @SuppressWarnings("unused")
-		Juego juego = new Juego();
+		Game juego = new Game();
 	}
 }
