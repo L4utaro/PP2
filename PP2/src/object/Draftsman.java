@@ -1,15 +1,28 @@
 package object;
 
 import java.awt.Color;
-
-import entorno.Entorno;
-import entorno.Herramientas;
+import entorno.*;
 
 public class Draftsman {
 	private Entorno entorno;
+
+	public Draftsman(InterfaceJuego i, GraphicMap gm, String title)
+	{
+		this.dibujarEscenario(i,gm,title);
+	}
 	
-	public Draftsman(Entorno entorno){
-		this.entorno = entorno;
+	public void dibujarEscenario(InterfaceJuego i, GraphicMap gm, String title)
+	{
+		this.entorno = new Entorno(i, title, (int)gm.getSizeMap().getAncho(), (int)gm.getSizeMap().getAlto());
+	}
+	
+	public void dibujarMarco(GraphicMap gm)
+	{
+		//System.out.println(gm.getSizeMap().getAncho()+" "+gm.getSizeMap().getAlto());
+		this.entorno.dibujarRectangulo(0, 0, gm.getSizeMarco().getAncho(), gm.getSizeMap().getAlto()*2, 0, Color.GRAY);
+		this.entorno.dibujarRectangulo(0, 0, gm.getSizeMap().getAncho()*2, gm.getSizeMarco().getAlto(), 0, Color.RED);
+		this.entorno.dibujarRectangulo(gm.getSizeMap().getAncho()+10, 0, gm.getSizeMarco().getAncho(), gm.getSizeMap().getAlto()*2+20, 0, Color.GREEN);
+		this.entorno.dibujarRectangulo(0, gm.getSizeMap().getAlto()+10, gm.getSizeMap().getAncho()*2, gm.getSizeMarco().getAlto(), 0, Color.BLUE);
 	}
 	
 	public void dibujarImagen(String rutaImagen, Coordinate coordinate){
@@ -28,4 +41,6 @@ public class Draftsman {
 	public void dibujarCirculo(Coordinate coordinate, double diametro, Color color){
 		this.entorno.dibujarCirculo(coordinate.getX(), coordinate.getY(), diametro, color);
 	}
+	
+
 }

@@ -1,26 +1,29 @@
 package object;
 
-public class GraphicMap {
-	private Size sizeMarco;
-	private Map map;
+import modelo.ObjetoGrafico;
+
+public class GraphicMap extends Map{
 	
-	public GraphicMap(Size sizeMarco, Map map){
-		
+	private Size sizeMarco;
+	
+	public GraphicMap(Size map, Size marco)
+	{
+		super(map);
+		this.sizeMarco = marco;
 	}
 
-	public Size getSizeMarco() {
+	public Size getSizeMarco() 
+	{
 		return sizeMarco;
 	}
 
-	public void setSizeMarco(Size sizeMarco) {
+	public void setSizeMarco(Size sizeMarco) 
+	{
 		this.sizeMarco = sizeMarco;
 	}
-
-	public Map getMap() {
-		return map;
-	}
-
-	public void setMap(Map map) {
-		this.map = map;
+	
+	public ObjetoGrafico getObjetoEnCoordenada(Coordinate coor)
+	{
+		return null;
 	}
 }

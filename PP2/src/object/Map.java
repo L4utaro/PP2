@@ -3,15 +3,18 @@ package object;
 public class Map {
 	private Size sizeMap;
 	
-	public Map(Size sizeMap){
+	public Map(Size sizeMap)
+	{
 		this.sizeMap = sizeMap;
 	}
 
-	public Size getSizeMap() {
+	public Size getSizeMap() 
+	{
 		return sizeMap;
 	}
 
-	public void setSizeMap(Size sizeMap) {
+	public void setSizeMap(Size sizeMap) 
+	{
 		this.sizeMap = sizeMap;
 	}
 }
