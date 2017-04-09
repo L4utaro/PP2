@@ -4,26 +4,28 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+import object.Coordinate;
+
 public class Util {
 
-	//controlarPosicion
-	public boolean controlarLimiteDeTablero(double posicionX, double posicionY, double anguloOrientacion){ //,Posicion posicion
-		if(anguloOrientacion  == Math.PI && posicionX == 0){
-			System.out.println("FUERA DE RANGO IZQUIERDA");
-			return  false; //izquierda
-		}if(anguloOrientacion  == 0 && posicionX == 800){
-			System.out.println("FUERA DE RANGO DERECHA");
-			return false; //derecha 
-		}if(anguloOrientacion  == Math.PI*1.5 && posicionY == 0){
-			System.out.println("FUERA DE RANGO ARRIBA");
-			return false;//arriba 
-		}if(anguloOrientacion  == Math.PI/2 && posicionY == 600){
-			System.out.println("FUERA DE RANGO ABAJO");
-			return false; //abajo 
+	//controla la posicion del objeto a traves de las coordenadas, para asegurarse que no salga del limite del mapa
+		public static boolean controlarLimiteDeTablero(Coordinate coordinate){ //,Posicion posicion
+			if( coordinate.getX() == 20){
+				System.out.println("FUERA DE RANGO IZQUIERDA");
+				return  false; //izquierda
+			}if(coordinate.getX() == 780){
+				System.out.println("FUERA DE RANGO DERECHA");
+				return false; //derecha 
+			}if(coordinate.getY() == 0){
+				System.out.println("FUERA DE RANGO ARRIBA");
+				return false;//arriba 
+			}if(coordinate.getY() == 580){
+				System.out.println("FUERA DE RANGO ABAJO");
+				return false; //abajo 
+			}
+			return true;
 		}
-		return true;
-	}
-	
+		
 	public static ImageIcon redimension(ImageIcon icono, int x,int y){
 		Image img = icono.getImage(); 
 		Image otraimg = img.getScaledInstance(x,y,java.awt.Image.SCALE_SMOOTH); //creamos una imagen nueva dándole las dimensiones que queramos a la antigua

@@ -1,8 +1,8 @@
 package object;
 
 import enums.Orientation;
-import enums.TankBullet;
 
+@SuppressWarnings("unused")
 public class TankController {
 	private Tank tank;
 	

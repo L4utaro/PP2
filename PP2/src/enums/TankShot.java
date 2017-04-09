@@ -1,5 +1,5 @@
 package enums;
 
-public enum TankBullet {
+public enum TankShot {
 	EXISTS, NO_EXISTS;
 }

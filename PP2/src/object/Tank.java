@@ -1,37 +1,40 @@
 package object;
 
 import enums.Orientation;
-import enums.TankBullet;
+import enums.TankShot;
 
 public class Tank {
 	private Orientation orientation;
-	private TankBullet tankBullet;
+	private TankShot tankShot;
 	private Coordinate coordinate;
 	private Size size;
 	private Bullet bullet;
 	
 	public Tank(Orientation orientation, Coordinate coordinate,	Size size){
 		this.orientation = orientation;
-		//this.tankBullet = NO_EXISTS; 
 		this.coordinate = coordinate;
 		this.size = size;
 	}
 
+	//dependiendo del estado en que se encuentre se gira
+	//le paso una nueva orientacion que reemplaza a la anterior, y cuando lo dibuje girara el tanque
+	public void girar(Orientation orientation){
+		
+	}
+	
+	//dependiendo del estado en que se encuentre se mueve
 	public void moverse(){
 		
 	}
 	
 	public void disparar(){
-		if(tankBullet.equals(TankBullet.NO_EXISTS)){
+		if(tankShot.equals(TankShot.NO_EXISTS)){
 			bullet = new Bullet(orientation, coordinate,
 					new Size(10, 10));
+			tankShot = TankShot.EXISTS;
 		}
 	}
-	
-	public void girar(Orientation orientation){
-		
-	}
-	
+
 	public Orientation getOrientation() {
 		return orientation;
 	}
@@ -40,12 +43,12 @@ public class Tank {
 		this.orientation = orientation;
 	}
 
-	public TankBullet getTankBullet() {
-		return tankBullet;
+	public TankShot getTankBullet() {
+		return tankShot;
 	}
 
-	public void setTankBullet(TankBullet tankBullet) {
-		this.tankBullet = tankBullet;
+	public void setTankBullet(TankShot tankShot) {
+		this.tankShot = tankShot;
 	}
 
 	public Coordinate getCoordinate() {
