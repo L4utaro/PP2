@@ -18,13 +18,35 @@ public class Tank {
 
 	//dependiendo del estado en que se encuentre se gira
 	//le paso una nueva orientacion que reemplaza a la anterior, y cuando lo dibuje girara el tanque
-	public void girar(Orientation orientation){
-		
+	public void girar(Orientation orientation)
+	{
+		this.setOrientation(orientation);
 	}
 	
 	//dependiendo del estado en que se encuentre se mueve
-	public void moverse(){
-		
+	public void moverseArriba()
+	{
+		if(getOrientation().equals(Orientation.UP))
+			this.coordinate.setY(this.coordinate.getY()+5);
+		this.girar(Orientation.UP);			
+	}
+	public void moverseAbajo()
+	{
+		if(getOrientation().equals(Orientation.DOWN))
+			this.coordinate.setY(this.coordinate.getY()-5);
+		this.girar(Orientation.DOWN);			
+	}
+	public void moverseDerecha()
+	{
+		if(getOrientation().equals(Orientation.RIGTH))
+			this.coordinate.setX(this.coordinate.getX()+5);
+		this.girar(Orientation.RIGTH);			
+	}
+	public void moverseIzquierda()
+	{
+		if(getOrientation().equals(Orientation.LEFT))
+			this.coordinate.setX(this.coordinate.getX()-5);
+		this.girar(Orientation.LEFT);			
 	}
 	
 	public void disparar(){
