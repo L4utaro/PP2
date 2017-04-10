@@ -11,11 +11,11 @@ public class Util {
 
 	//controla la posicion del objeto a traves de las coordenadas, para asegurarse que no salga del limite del mapa
 		public static boolean estaEnElLimiteDeTablero(Orientation orientation, Coordinate coordinate){ //,Posicion posicion
-			if( orientation.equals(Orientation.LEFT) && coordinate.getX() <= 20){
+			if( orientation.equals(Orientation.LEFT) && coordinate.getX() <= 30){
 				return  true; //izquierda
 			}if(orientation.equals(Orientation.RIGTH) && coordinate.getX() >= 780){
 				return true; //derecha 
-			}if(orientation.equals(Orientation.UP) && coordinate.getY() <= 20){
+			}if(orientation.equals(Orientation.UP) && coordinate.getY() <= 30){
 				return true;//arriba 
 			}if(orientation.equals(Orientation.DOWN) && coordinate.getY() >= 580){
 				return true; //abajo 
