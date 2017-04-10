@@ -53,7 +53,8 @@ public class Tank {
 	
 	public void disparar(){
 		if(tankShot.equals(TankShot.NO_EXISTS)){
-			bullet = new Bullet(orientation, coordinate,
+			bullet = new Bullet(orientation, 
+					new Coordinate(this.coordinate.getX(),this.coordinate.getY()),
 					new Size(10, 10));
 			tankShot = TankShot.EXISTS;
 		}
