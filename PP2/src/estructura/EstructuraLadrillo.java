@@ -15,7 +15,8 @@ public class EstructuraLadrillo extends ObjetoGrafico implements Estructura{
 	public EstructuraLadrillo()
 	{
 		//this.imagen = new Imagen("agua.png");
-		System.out.println("me construi estructura ladrillo");
+		//System.out.println("me construi estructura ladrillo");
+		this.color = Color.RED;
 	}
 		
 	@Override
@@ -40,5 +41,7 @@ public class EstructuraLadrillo extends ObjetoGrafico implements Estructura{
 		// TODO Auto-generated method stub
 		ent.dibujarRectangulo(c.getX(), c.getY(), 20, 20, 0, Color.YELLOW);
 	}
+
+	
 	
 }

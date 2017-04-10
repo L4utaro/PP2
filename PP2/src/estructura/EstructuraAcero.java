@@ -7,7 +7,7 @@ import modelo.Bala;
 import modelo.Casilla;
 import modelo.ObjetoGrafico;
 import modelo.objeto.Coordenada;
-import modelo.objeto.Imagen;
+
 
 public class EstructuraAcero extends ObjetoGrafico implements Estructura{
 
@@ -15,7 +15,8 @@ public class EstructuraAcero extends ObjetoGrafico implements Estructura{
 	public EstructuraAcero()
 	{
 		//this.imagen = new Imagen("agua.png");
-		System.out.println("me construi, estructura acero ");
+		//System.out.println("me construi, estructura acero ");
+		this.color = Color.ORANGE;
 	}
 	
 	public void colisionBala()
@@ -30,6 +31,7 @@ public class EstructuraAcero extends ObjetoGrafico implements Estructura{
 		
 	}
 
+	
 	@Override
 	public void destruir(Casilla casilla) 
 	{

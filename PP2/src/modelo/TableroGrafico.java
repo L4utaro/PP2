@@ -82,7 +82,7 @@ private Tablero tablero;
 				if(obj!=null){
 					System.out.println(p);
 					obj.dibujar(ent,tablero.getCasilla(p).getCoordenada());
-					System.out.println(tablero.getCasilla(p).getCoordenada() +" "+tablero.getCasilla(p).getObjeto().getPosicion());
+					//System.out.println(tablero.getCasilla(p).getCoordenada() +" "+tablero.getCasilla(p).getObjeto().getPosicion());
 				}	
 			}
 		}		

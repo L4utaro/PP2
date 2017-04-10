@@ -4,12 +4,14 @@ import java.awt.Color;
 
 import entorno.Entorno;
 import modelo.objeto.*;
+import object.Coordinate;
 
 public abstract class ObjetoGrafico {
 	
-	protected Posicion posicion;
+	protected Coordinate coordenada;
 	protected Tamaño tamaño;
 	protected Imagen imagen;
+	protected Color color;
 	
 	public ObjetoGrafico()
 	{
@@ -19,14 +21,14 @@ public abstract class ObjetoGrafico {
 
 	public abstract void dibujar(Entorno ent, Coordenada c);
 	
-	public Posicion getPosicion() 
+	public Coordinate getCoordenada() 
 	{
-		return posicion;
+		return coordenada;
 	}
 
-	public void setPosicion(Posicion posicion) 
+	public void setCoordenada(Coordinate coordenada) 
 	{
-		this.posicion = posicion;
+		this.coordenada = coordenada;
 	}
 
 	public Imagen getImagen() 
@@ -47,6 +49,14 @@ public abstract class ObjetoGrafico {
 	public void setTamaño(Tamaño t)
 	{
 		this.tamaño = t ;
+	}
+
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
 	}
 	
 }

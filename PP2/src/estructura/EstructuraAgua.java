@@ -16,7 +16,8 @@ public class EstructuraAgua extends ObjetoGrafico implements Estructura {
 	public EstructuraAgua()
 	{
 		//this.imagen = new Imagen("/PP2/src/imagen/agua.png");
-		System.out.println("me construi , estructura agua");
+		//System.out.println("me construi , estructura agua");
+		this.color = Color.BLUE;
 	}
 	
 	
@@ -49,5 +50,7 @@ public class EstructuraAgua extends ObjetoGrafico implements Estructura {
 		// TODO Auto-generated method stub
 		ent.dibujarRectangulo(c.getX(), c.getY(), 20, 20, 0, Color.BLUE);
 	}
+	
+
 }
 
