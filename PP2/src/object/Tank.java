@@ -2,6 +2,7 @@ package object;
 
 import enums.Orientation;
 import enums.TankShot;
+import util.Util;
 
 public class Tank {
 	private Orientation orientation;
@@ -9,6 +10,7 @@ public class Tank {
 	private Coordinate coordinate;
 	private Size size;
 	private Bullet bullet;
+	private double velocidadDeMovimiento = 2;
 	
 	public Tank(Orientation orientation, Coordinate coordinate,	Size size){
 		this.orientation = orientation;
@@ -56,7 +58,27 @@ public class Tank {
 			tankShot = TankShot.EXISTS;
 		}
 	}
-
+	
+	//dependiendo del estado en que se encuentre se mueve en esa posicion
+	public void moverse(){
+		//controlar que no choque con las estructuras o el limite del mapa
+		if(!Util.estaEnElLimiteDeTablero(orientation, coordinate)){
+			Util.moverse(orientation, coordinate, velocidadDeMovimiento);
+		}
+	}
+	public double getAngulo() {
+		if(this.orientation.equals(Orientation.UP)){
+			return Math.PI*1.5;
+		}if(this.orientation.equals(Orientation.DOWN)){
+			return Math.PI/2;
+		}if(this.orientation.equals(Orientation.LEFT)){
+			return Math.PI;
+		}if(this.orientation.equals(Orientation.RIGTH)){
+			return 0;
+		}
+	return 0;
+	}
+	
 	public Orientation getOrientation() {
 		return orientation;
 	}

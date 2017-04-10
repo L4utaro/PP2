@@ -1,31 +1,82 @@
 package test;
 
+import java.awt.Color;
+
 import entorno.Entorno;
 import entorno.InterfaceJuego;
-import modelo.Tanque;
-import presentacion.controlador.Disparo;
+import enums.Orientation;
+import enums.TankShot;
+import object.Bullet;
+import object.Coordinate;
+import object.Size;
+import object.Tank;
 
 public class Test extends InterfaceJuego{
-    private Entorno entorno;
-    private Tanque tanque;
-    private Disparo disparo;
-    private int ANCHO_ENTORNO = 800;
-    private int ALTO_ENTORNO = 600;
+    private Entorno ent;
+    private Tank tank;
+    private Bullet bullet;
+	private TankShot tankShot;
     
+	//EN ESTE TEST ESTA EL TANQUE Y BALA
     public Test(){
-    	this.entorno = new Entorno(this, "Battle-City", ANCHO_ENTORNO, ALTO_ENTORNO);
-    	this.tanque = new Tanque(400, 300, 0);
-//    	this.tanque.Dibujar(entorno, false);
-    	this.disparo = new Disparo(tanque,entorno);
+		this.ent = new Entorno(this, "GameDemo", 800, 600);
+    	this.tank = new Tank(Orientation.UP, new Coordinate(400, 300),new Size(40, 40));
+		this.tankShot = TankShot.NO_EXISTS;
     }
     
+	public void control_tank(){
+		if(ent.estaPresionada(ent.TECLA_DERECHA)){
+			if(this.tank.getOrientation().equals(Orientation.RIGTH)){
+				tank.moverse();
+			}
+			this.tank.setOrientation(Orientation.RIGTH);
+		}
+		if(ent.estaPresionada(ent.TECLA_ARRIBA)){
+			if(this.tank.getOrientation().equals(Orientation.UP)){
+				tank.moverse();
+			}
+			this.tank.setOrientation(Orientation.UP);
+		}
+		if(ent.estaPresionada(ent.TECLA_IZQUIERDA)){
+			if(this.tank.getOrientation().equals(Orientation.LEFT)){
+				tank.moverse();
+			}
+			this.tank.setOrientation(Orientation.LEFT);
+		}
+		if(ent.estaPresionada(ent.TECLA_ABAJO)){
+			if(this.tank.getOrientation().equals(Orientation.DOWN)){
+				tank.moverse();
+			}
+			this.tank.setOrientation(Orientation.DOWN);
+		}
+		if(ent.estaPresionada(ent.TECLA_ENTER)){
+			if(this.tankShot.equals(TankShot.NO_EXISTS)){
+				bullet = new Bullet(this.tank.getOrientation(), this.tank.getCoordinate(),
+						new Size(10, 10));
+				this.tankShot = TankShot.EXISTS;
+			}
+		}
+		this.ent.dibujarRectangulo(
+				this.tank.getCoordinate().getX(),
+				this.tank.getCoordinate().getY(), this.tank.getSize().getAncho(),
+				this.tank.getSize().getAlto(), this.tank.getAngulo(), Color.red);
+	}
+    
+	public void control_bullet(){
+		if(this.tankShot.equals(TankShot.EXISTS)){
+			this.bullet.avanzarBullet();
+			this.ent.dibujarCirculo(this.bullet.getCoordinate().getX(), 
+					this.bullet.getCoordinate().getY(), 10, Color.green);
+			if(this.bullet.colisionBullet()){
+				this.tankShot = TankShot.NO_EXISTS;
+				this.bullet = null;
+			}
+		}
+	}
+	
     public void tick(){
-    	//this.entorno.dibujarCirculo(400, 300, 100, Color.red);
-    	//Image imagen = Herramientas.cargarImagen("imagen/bala 00.png");
-    	//this.entorno.dibujarImagen(imagen, 400, 300, 0);
-    	if(this.entorno.estaPresionada(this.entorno.TECLA_CTRL)){
-        		this.disparo.disparar(); 
-    	}
+    	control_tank();
+    	control_bullet();
     }
 
 	@SuppressWarnings("unused")

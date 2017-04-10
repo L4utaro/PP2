@@ -7,6 +7,7 @@ public class Bullet {
 	private Orientation orientation;
 	private Coordinate coordinate;
 	private Size size;
+	private double velocidadDeMovimiento = 5;
 	
 	public Bullet(Orientation orientation, Coordinate coordinate, Size size){
 		this.orientation = orientation;
@@ -14,30 +15,16 @@ public class Bullet {
 		this.size = size;
 	}
 	
-	
-	// no se si entraria aca esto?
 	//seria si colisiona con una estructura o con el limite del tablero
-	public void colisionBullet(){
-		if(!Util.controlarLimiteDeTablero(coordinate)){
-			//TankBullet = TankBullet.NO_EXISTS;
-			//bullet = null; o bulletDesaparece();
+	public boolean colisionBullet(){
+		if(Util.estaEnElLimiteDeTablero(orientation, coordinate)){
+			return true;
 		}
+		return false;
 	}
 	
 	public void avanzarBullet(){
-		colisionBullet();
-		if(this.orientation.equals(Orientation.UP)){
-			this.coordinate.setY(this.coordinate.getY() - 5);
-		}
-		if(this.orientation.equals(Orientation.DOWN)){
-			this.coordinate.setY(this.coordinate.getY() + 5);
-		}
-		if(this.orientation.equals(Orientation.LEFT)){
-			this.coordinate.setX(this.coordinate.getX() - 5);
-		}
-		if(this.orientation.equals(Orientation.RIGTH)){
-			this.coordinate.setX(this.coordinate.getX() + 5);
-		}
+		Util.moverse(orientation, coordinate, velocidadDeMovimiento);
 	}
 	
 	public Orientation getOrientation() {

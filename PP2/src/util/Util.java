@@ -4,27 +4,40 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+import enums.Orientation;
 import object.Coordinate;
 
 public class Util {
 
 	//controla la posicion del objeto a traves de las coordenadas, para asegurarse que no salga del limite del mapa
-		public static boolean controlarLimiteDeTablero(Coordinate coordinate){ //,Posicion posicion
-			if( coordinate.getX() == 20){
-				System.out.println("FUERA DE RANGO IZQUIERDA");
-				return  false; //izquierda
-			}if(coordinate.getX() == 780){
-				System.out.println("FUERA DE RANGO DERECHA");
-				return false; //derecha 
-			}if(coordinate.getY() == 0){
-				System.out.println("FUERA DE RANGO ARRIBA");
-				return false;//arriba 
-			}if(coordinate.getY() == 580){
-				System.out.println("FUERA DE RANGO ABAJO");
-				return false; //abajo 
+		public static boolean estaEnElLimiteDeTablero(Orientation orientation, Coordinate coordinate){ //,Posicion posicion
+			if( orientation.equals(Orientation.LEFT) && coordinate.getX() <= 20){
+				return  true; //izquierda
+			}if(orientation.equals(Orientation.RIGTH) && coordinate.getX() >= 780){
+				return true; //derecha 
+			}if(orientation.equals(Orientation.UP) && coordinate.getY() <= 20){
+				return true;//arriba 
+			}if(orientation.equals(Orientation.DOWN) && coordinate.getY() >= 580){
+				return true; //abajo 
 			}
-			return true;
+			return false;
 		}
+		
+	public static void moverse(Orientation orientation, Coordinate coordinate, double velocidadDeMovimiento){
+		if(orientation.equals(Orientation.UP)){
+			coordinate.setY(coordinate.getY() - velocidadDeMovimiento);
+		}
+		if(orientation.equals(Orientation.DOWN)){
+			coordinate.setY(coordinate.getY() + velocidadDeMovimiento);
+		}
+		if(orientation.equals(Orientation.LEFT)){
+			coordinate.setX(coordinate.getX() - velocidadDeMovimiento);
+		}
+		if(orientation.equals(Orientation.RIGTH)){
+			coordinate.setX(coordinate.getX() + velocidadDeMovimiento);
+		}
+	}
+		
 		
 	public static ImageIcon redimension(ImageIcon icono, int x,int y){
 		Image img = icono.getImage(); 
@@ -34,15 +47,3 @@ public class Util {
 	}
 	
 }
-
-
-/*if(anguloOrientacion  == 270 && posicionX == 0){
-return  false; //izquierda
-}if(anguloOrientacion  == 90 && posicionX == 24){
-return false; //derecha 
-}if(anguloOrientacion  == 0 && posicionY == 0){
-return false;//arriba 
-}if(anguloOrientacion  == 180 && posicionY == 24){
-return false; //abajo 
-}
-return true;*/
