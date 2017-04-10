@@ -51,7 +51,7 @@ public class Test extends InterfaceJuego{
 		}
 		if(ent.estaPresionada(ent.TECLA_ENTER)){
 			if(this.tankShot.equals(TankShot.NO_EXISTS)){
-				bullet = new Bullet(this.tank.getOrientation(), this.tank.getCoordinate(),
+				bullet = new Bullet(this.tank.getOrientation(), new Coordinate(tank.getCoordinate().getX(),tank.getCoordinate().getY()),
 						new Size(10, 10));
 				this.tankShot = TankShot.EXISTS;
 			}
