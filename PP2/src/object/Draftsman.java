@@ -1,8 +1,6 @@
 package object;
 
 import java.awt.Color;
-import java.util.Random;
-
 import entorno.*;
 import modelo.ObjetoGrafico;
 
@@ -21,12 +19,13 @@ public class Draftsman {
 	
 	public void dibujarMarco(GraphicMap gm)
 	{
-		//System.out.println(gm.getSizeMap().getAncho()+" "+gm.getSizeMap().getAlto());
 		Color color = Color.GRAY;
-		this.entorno.dibujarRectangulo(0, 0, gm.getSizeMarco().getAncho(), gm.getSizeMap().getAlto()*2, 0, color);
-		this.entorno.dibujarRectangulo(0, 0, gm.getSizeMap().getAncho()*2, gm.getSizeMarco().getAlto(), 0, color);
-		this.entorno.dibujarRectangulo(gm.getSizeMap().getAncho()+10, 0, gm.getSizeMarco().getAncho(), gm.getSizeMap().getAlto()*2+20, 0, color);
-		this.entorno.dibujarRectangulo(0, gm.getSizeMap().getAlto()+10, gm.getSizeMap().getAncho()*2, gm.getSizeMarco().getAlto(), 0, color);
+		// linea de arriba y de lado izquierdo
+		this.entorno.dibujarRectangulo(10, 10, gm.getSizeMarco().getAncho(), gm.getSizeMap().getAlto()*2, 0, color);
+		this.entorno.dibujarRectangulo(10, 10, gm.getSizeMap().getAncho()*2, gm.getSizeMarco().getAlto(), 0, color);
+		// linea de abajo y lado derecho
+		this.entorno.dibujarRectangulo(gm.getSizeMap().getAncho(), 0, gm.getSizeMarco().getAncho(), gm.getSizeMap().getAlto()*2+20, 0, color);
+		this.entorno.dibujarRectangulo(10, gm.getSizeMap().getAlto(), gm.getSizeMap().getAncho()*2, gm.getSizeMarco().getAlto(), 0, color);
 	}
 	
 	public void dibujarImagen(String rutaImagen, Coordinate coordinate){
@@ -48,7 +47,6 @@ public class Draftsman {
 	
 	public void dibujarEstructura(ObjetoGrafico e)
 	{
-
-		this.entorno.dibujarRectangulo(e.getCoordenada().getX(),e.getCoordenada().getY() , e.getTamaño().getAncho(), e.getTamaño().getAlto(), 0, e.getColor());
+		this.entorno.dibujarRectangulo(e.getCoordenada().getX()+(e.getTamaño().getAncho()/2),e.getCoordenada().getY()+e.getTamaño().getAlto()/2, e.getTamaño().getAncho(), e.getTamaño().getAlto(), 0, e.getColor());
 	}
 }

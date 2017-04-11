@@ -1,10 +1,7 @@
 package object;
 
 import java.util.*;
-
-import estructura.EstructuraAcero;
-import estructura.EstructuraAgua;
-import estructura.EstructuraLadrillo;
+import estructura.*;
 import modelo.ObjetoGrafico;
 import modelo.objeto.Tamaño;
 
@@ -14,14 +11,14 @@ public class ListStructures
 	private List<ObjetoGrafico> estructuras;
 	private boolean listaLenghtValidate;
 	
-	public ListStructures(int length)
+	public ListStructures(GraphicMap map, int length)
 	{
 		this.setLenght(length);
 		this.estructuras = new ArrayList<>();
-		this.inicializarLista();
+		this.inicializarLista(map);
 	}
-
-	private void inicializarLista() 
+	
+	private void inicializarLista(GraphicMap mapa) 
 	{
 		if(listaLenghtValidate)
 		{
@@ -35,10 +32,14 @@ public class ListStructures
 		for(ObjetoGrafico o : estructuras)
 		{
 			Random ale = new Random();
-			int x = 40+(ale.nextInt(24)*40);
-			int y = 40+(ale.nextInt(14)*40);
-			o.setCoordenada(new Coordinate(x, y));
+			List<Coordinate> lista = mapa.listaCoordenadas();
+			int pos = ale.nextInt(lista.size());
+			Coordinate azar = mapa.getCoordenada(pos);
+//			System.out.println(azar);
+			//Coordinate azar = new Coordinate(20, 20);
+			o.setCoordenada(azar);
 			o.setTamaño(new Tamaño(40,40));
+			lista.remove(pos);
 		}
 	}
 

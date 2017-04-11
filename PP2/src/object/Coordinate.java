@@ -34,4 +34,12 @@ public class Coordinate {
 	{
 		return this.x>0 && this.y>0 && this.x<size.getAncho() && this.y<size.getAlto();
 	}
+
+	@Override
+	public String toString() 
+	{
+		return "Coordinate [x=" + x + ", y=" + y + "]";
+	}
+	
+	
 }
