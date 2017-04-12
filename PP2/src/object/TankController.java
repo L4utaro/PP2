@@ -1,9 +1,12 @@
 package object;
 
+import java.awt.Color;
 import java.util.Random;
 
 import entorno.Entorno;
 import enums.Orientation;
+import enums.TankShot;
+import util.Util;
 
 @SuppressWarnings("unused")
 public class TankController {
@@ -16,18 +19,22 @@ public class TankController {
 	
 	public void ControlUp()
 	{
+		if(tank.getCoordinate().getY() >= 25)
 		tank.moverseArriba();
 	}
 	public void ControlDown()
 	{
+		if(tank.getCoordinate().getY() <= 540)
 		tank.moverseAbajo();
 	}
 	public void ControlRigth()
 	{
+		if(tank.getCoordinate().getX() <= 940 )
 		tank.moverseDerecha();
 	}
 	public void ControlLeft()
 	{
+		if(tank.getCoordinate().getX() >= 25)
 		tank.moverseIzquierda();
 	}
 	
@@ -41,7 +48,7 @@ public class TankController {
 			ControlRigth();
 		if(ent.estaPresionada(ent.TECLA_IZQUIERDA))
 			ControlLeft();		
-		if(ent.estaPresionada(ent.TECLA_CTRL))
+		if(ent.estaPresionada(ent.TECLA_ENTER))
 			this.tank.disparar();
 	}
 	
@@ -64,10 +71,21 @@ public class TankController {
 	public void ai()
 	{
 		Orientation dir = this.genDirection();
-		for(int i=0;i<5;i++)
+		for(int i=0;i<1;i++)
 		{
 			this.ControlCpu(dir);
 		}
-		tank.disparar();
+		//tank.disparar();
+	}
+	public void control_bullet(Entorno entorno){
+		if(this.tank.getTankBullet().equals(TankShot.EXISTS)){
+			this.tank.getBullet().avanzarBullet();
+			entorno.dibujarCirculo(this.tank.getBullet().getCoordinate().getX(), 
+					this.tank.getBullet().getCoordinate().getY(), 10, Color.gray);
+			if(this.tank.getBullet().colisionBullet()){
+				this.tank.setTankBullet(TankShot.NO_EXISTS);
+				this.tank.setBullet(null);
+			}
+		}
 	}
 }
