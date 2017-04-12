@@ -70,9 +70,40 @@ public class TestUtil {
 	@Test
 	public void testMoversePorIzquierda() {
 		double velocidadDeMovimiento = 2;
-		Orientation orientation = Orientation.DOWN;
+		Orientation orientation = Orientation.LEFT;
 		Coordinate coordinate = new Coordinate(50, 579);
-		//assertTrue(Util.moverse(orientation, coordinate, velocidadDeMovimiento));
+		Coordinate coordinate2 = new Coordinate(50, 579);
+		Util.moverse(orientation, coordinate2, velocidadDeMovimiento);
+		assertNotEquals(coordinate, coordinate2);
 	}
 	
+	@Test
+	public void testMoversePorDerecha() {
+		double velocidadDeMovimiento = 2;
+		Orientation orientation = Orientation.RIGTH;
+		Coordinate coordinate = new Coordinate(50, 579);
+		Coordinate coordinate2 = new Coordinate(50, 579);
+		Util.moverse(orientation, coordinate2, velocidadDeMovimiento);
+		assertNotEquals(coordinate, coordinate2);
+	}
+	
+	@Test
+	public void testMoversePorArriba() {
+		double velocidadDeMovimiento = 2;
+		Orientation orientation = Orientation.UP;
+		Coordinate coordinate = new Coordinate(50, 579);
+		Coordinate coordinate2 = new Coordinate(50, 579);
+		Util.moverse(orientation, coordinate2, velocidadDeMovimiento);
+		assertNotEquals(coordinate, coordinate2);
+	}
+	
+	@Test
+	public void testMoversePorAbajo() {
+		double velocidadDeMovimiento = 2;
+		Orientation orientation = Orientation.DOWN;
+		Coordinate coordinate = new Coordinate(50, 579);
+		Coordinate coordinate2 = new Coordinate(50, 579);
+		Util.moverse(orientation, coordinate2, velocidadDeMovimiento);
+		assertNotEquals(coordinate, coordinate2);
+	}
 }

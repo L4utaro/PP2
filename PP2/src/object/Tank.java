@@ -67,6 +67,7 @@ public class Tank {
 			Util.moverse(orientation, coordinate, velocidadDeMovimiento);
 		}
 	}
+	
 	public double getAngulo() {
 		if(this.orientation.equals(Orientation.UP)){
 			return Math.PI*1.5;
