@@ -1,21 +1,25 @@
 package object;
 
+import entorno.Entorno;
 import enums.Orientation;
 import enums.TankShot;
+import modelo.ObjetoGrafico;
+import modelo.objeto.Coordenada;
 import util.Util;
 
-public class Tank {
+public class Tank extends ObjetoGrafico {
 	private Orientation orientation;
 	private TankShot tankShot;
 	private Coordinate coordinate;
 	private Size size;
 	private Bullet bullet;
-	private double velocidadDeMovimiento = 2;
+	private double velocidadDeMovimiento = 5;
 	
 	public Tank(Orientation orientation, Coordinate coordinate,	Size size){
 		this.orientation = orientation;
 		this.coordinate = coordinate;
 		this.size = size;
+		this.tankShot = TankShot.NO_EXISTS;
 	}
 
 	//dependiendo del estado en que se encuentre se gira
@@ -29,32 +33,32 @@ public class Tank {
 	public void moverseArriba()
 	{
 		if(getOrientation().equals(Orientation.UP))
-			this.coordinate.setY(this.coordinate.getY()+5);
+			this.coordinate.setY(this.coordinate.getY()-this.velocidadDeMovimiento);
 		this.girar(Orientation.UP);			
 	}
 	public void moverseAbajo()
 	{
 		if(getOrientation().equals(Orientation.DOWN))
-			this.coordinate.setY(this.coordinate.getY()-5);
+			this.coordinate.setY(this.coordinate.getY()+this.velocidadDeMovimiento);
 		this.girar(Orientation.DOWN);			
 	}
 	public void moverseDerecha()
 	{
 		if(getOrientation().equals(Orientation.RIGTH))
-			this.coordinate.setX(this.coordinate.getX()+5);
+			this.coordinate.setX(this.coordinate.getX()+this.velocidadDeMovimiento);
 		this.girar(Orientation.RIGTH);			
 	}
 	public void moverseIzquierda()
 	{
 		if(getOrientation().equals(Orientation.LEFT))
-			this.coordinate.setX(this.coordinate.getX()-5);
+			this.coordinate.setX(this.coordinate.getX()-this.velocidadDeMovimiento);
 		this.girar(Orientation.LEFT);			
 	}
 	
 	public void disparar(){
 		if(tankShot.equals(TankShot.NO_EXISTS)){
 			bullet = new Bullet(orientation, 
-					new Coordinate(this.coordinate.getX(),this.coordinate.getY()),
+					new Coordinate(this.coordinate.getX()+20,this.coordinate.getY()+20),
 					new Size(10, 10));
 			tankShot = TankShot.EXISTS;
 		}
@@ -118,5 +122,11 @@ public class Tank {
 
 	public void setBullet(Bullet bullet) {
 		this.bullet = bullet;
+	}
+
+	@Override
+	public void dibujar(Entorno ent, Coordenada c) {
+		// TODO Auto-generated method stub
+		
 	}
 }
