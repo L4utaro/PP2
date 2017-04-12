@@ -21,16 +21,16 @@ public class TestTank {
 		Tank tank = new Tank(orientation, coordinate, size);
 		
 		Orientation orientation2 = Orientation.LEFT;
-		Coordinate coordinate2 = new Coordinate(398, 400);
+		Coordinate coordinate2 = new Coordinate(395, 400);
 		Size size2 = new Size(40, 40);
 		Tank expected = new Tank(orientation2, coordinate2, size2);
 		
 		tank.moverse();
-		double x = tank.getCoordinate().getX();
 		System.out.println(expected.getCoordinate().getX());
 		System.out.println(tank.getCoordinate().getX());
 		//assertEquals(expected.getCoordinate().getX(), tank.getCoordinate().getX());
-		assertNotEquals(398.0,x);
+		assertSame(398.0,tank.getCoordinate().getX());
+		assertNotEquals(395.0,tank.getCoordinate().getX());
 	}
 	
 	//girar

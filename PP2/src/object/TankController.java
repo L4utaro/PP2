@@ -6,6 +6,7 @@ import java.util.Random;
 import entorno.Entorno;
 import enums.Orientation;
 import enums.TankShot;
+import sonido.Sonido;
 import util.Util;
 
 @SuppressWarnings("unused")
@@ -48,8 +49,10 @@ public class TankController {
 			ControlRigth();
 		if(ent.estaPresionada(ent.TECLA_IZQUIERDA))
 			ControlLeft();		
-		if(ent.estaPresionada(ent.TECLA_ENTER))
+		if(ent.estaPresionada(ent.TECLA_ENTER)){
+			Sonido.TanqueDisparo.play();
 			this.tank.disparar();
+		}
 	}
 	
 	private void ControlCpu(Orientation direction)

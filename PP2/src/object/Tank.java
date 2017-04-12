@@ -74,13 +74,13 @@ public class Tank extends ObjetoGrafico {
 	
 	public double getAngulo() {
 		if(this.orientation.equals(Orientation.UP)){
-			return Math.PI*1.5;
-		}if(this.orientation.equals(Orientation.DOWN)){
-			return Math.PI/2;
-		}if(this.orientation.equals(Orientation.LEFT)){
-			return Math.PI;
-		}if(this.orientation.equals(Orientation.RIGTH)){
 			return 0;
+		}if(this.orientation.equals(Orientation.DOWN)){
+			return Math.PI;
+		}if(this.orientation.equals(Orientation.LEFT)){
+			return Math.PI*1.5;
+		}if(this.orientation.equals(Orientation.RIGTH)){
+			return Math.PI/2;
 		}
 	return 0;
 	}

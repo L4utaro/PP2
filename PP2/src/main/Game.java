@@ -9,7 +9,6 @@ public class Game extends InterfaceJuego {
    
     private Tank tank;
 	//private Image fondo = Herramientas.cargarImagen("imagen/fondo.jpg");
-    //private Bala bala;
     private Draftsman dibujador;
     private GraphicMap mapa;
 	private ListStructures estructuras;
