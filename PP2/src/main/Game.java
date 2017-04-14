@@ -35,7 +35,7 @@ public class Game extends InterfaceJuego {
 		}
     	
     	this.dibujador.dibujarTank(tank);
-    	this.tControl.ControlTank(dibujador.getEntorno());
+    	this.tControl.ControlTank(dibujador.getEntorno(),estructuras.getLista());
     	this.tControl.control_bullet(dibujador.getEntorno());
     }
 

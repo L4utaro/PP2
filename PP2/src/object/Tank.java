@@ -34,25 +34,25 @@ public class Tank extends ObjetoGrafico {
 	{
 		if(getOrientation().equals(Orientation.UP))
 			this.coordinate.setY(this.coordinate.getY()-this.velocidadDeMovimiento);
-		this.girar(Orientation.UP);			
+		//this.girar(Orientation.UP);			
 	}
 	public void moverseAbajo()
 	{
 		if(getOrientation().equals(Orientation.DOWN))
 			this.coordinate.setY(this.coordinate.getY()+this.velocidadDeMovimiento);
-		this.girar(Orientation.DOWN);			
+		//this.girar(Orientation.DOWN);			
 	}
 	public void moverseDerecha()
 	{
 		if(getOrientation().equals(Orientation.RIGTH))
 			this.coordinate.setX(this.coordinate.getX()+this.velocidadDeMovimiento);
-		this.girar(Orientation.RIGTH);			
+		//this.girar(Orientation.RIGTH);			
 	}
 	public void moverseIzquierda()
 	{
 		if(getOrientation().equals(Orientation.LEFT))
 			this.coordinate.setX(this.coordinate.getX()-this.velocidadDeMovimiento);
-		this.girar(Orientation.LEFT);			
+		//this.girar(Orientation.LEFT);			
 	}
 	
 	public void disparar(){

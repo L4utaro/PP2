@@ -1,13 +1,16 @@
 package object;
 
 import java.awt.Color;
+import java.util.List;
 import java.util.Random;
 
 import entorno.Entorno;
 import entorno.Herramientas;
 import enums.Orientation;
 import enums.TankShot;
+import modelo.ObjetoGrafico;
 import sonido.Sonido;
+import util.Colision;
 import util.Util;
 
 @SuppressWarnings("unused")
@@ -56,6 +59,43 @@ public class TankController {
 			this.tank.disparar();
 		}
 	}
+	
+	public void ControlTank(Entorno ent, List<ObjetoGrafico> list)
+	{
+		if(ent.estaPresionada(ent.TECLA_ARRIBA))
+		{
+			tank.girar(Orientation.UP);
+			if(!Colision.anyColisionUp(tank, list))
+			ControlUp();
+		}			
+		if(ent.estaPresionada(ent.TECLA_ABAJO))
+		{
+			tank.girar(Orientation.DOWN);
+			if(!Colision.anyColisionDown(tank, list))
+			ControlDown();
+		}			
+		if(ent.estaPresionada(ent.TECLA_DERECHA))
+		{
+			tank.girar(Orientation.RIGTH);
+			if(!Colision.anyColisionRigth(tank, list))
+			ControlRigth();
+		}			
+		if(ent.estaPresionada(ent.TECLA_IZQUIERDA))
+		{
+			tank.girar(Orientation.LEFT);
+			if(!Colision.anyColisionLeft(tank, list))
+			ControlLeft();
+		}					
+		if(ent.estaPresionada(ent.TECLA_ENTER)){
+			if(tank.getTankBullet().equals(TankShot.NO_EXISTS))
+			{
+				Sonido.TanqueDisparo.stop();
+				Sonido.TanqueDisparo.play();
+				this.tank.disparar();
+			}			
+		}
+	}
+	
 	
 	private void ControlCpu(Orientation direction)
 	{
